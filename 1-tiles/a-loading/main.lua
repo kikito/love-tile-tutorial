@@ -1,7 +1,6 @@
 
 function love.load()
 
-  -- Tile width and heigth
   tileW, tileH = 32,32
   
   images = {
