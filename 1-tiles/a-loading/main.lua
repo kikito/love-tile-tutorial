@@ -2,7 +2,7 @@
 function love.load()
 
   -- Tile width and heigth
-  local tileW, tileH = 32,32
+  tileW, tileH = 32,32
   
   images = {
     tileset = love.graphics.newImage('tileset.png')
