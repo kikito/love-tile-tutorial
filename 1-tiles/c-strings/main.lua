@@ -54,8 +54,8 @@ function love.draw()
   local quad
   
   for x,column in ipairs(Map) do
-    for y,tileValue in ipairs(column) do
-      if tileValue == ' ' then
+    for y,tileKey in ipairs(column) do
+      if tileKey == ' ' then
         quad = Quads.grass
       else
         quad = Quads.box

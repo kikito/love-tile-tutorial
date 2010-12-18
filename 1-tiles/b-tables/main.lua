@@ -42,8 +42,8 @@ function love.draw()
   local quad
 
   for y,row in ipairs(Tiles) do
-    for x,tileValue in ipairs(row) do
-      if tileValue == 0 then
+    for x,tileKey in ipairs(row) do
+      if tileKey == 0 then
         quad = Quads.grass
       else
         quad = Quads.box
