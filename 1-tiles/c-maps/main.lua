@@ -1,45 +1,17 @@
-
-local function newMap(tiles, quadEquivalence)
-  local map = {}
-
-  local width = #(tiles:match("[^\n]+"))
-
-  for x = 1,width,1 do
-    map[x] = {}
-  end
-
-  local x,y = 1,1
-  for row in tiles:gmatch("[^\n]+") do
-    assert(#row == width, 'Map is not squared: width of row ' .. tostring(y) .. ' should be ' .. tostring(width) .. ', but it is ' .. tostring(#row))
-    x = 1
-    for tile in row:gmatch(".") do
-      map[x][y] = tile
-      x = x + 1
-    end
-    y=y+1
-  end
-
-  return map
-end
-
-
-
 function love.load()
 
-  tileW, tileH = 32,32
+  TileW, TileH = 32,32
   
-  images = {
-    tileset = love.graphics.newImage('tileset.png')
+  Tileset = love.graphics.newImage('tileset.png')
+  
+  local tilesetW, tilesetH = Tileset:getWidth(), Tileset:getHeight()
+  
+  Quads = {
+    grass = love.graphics.newQuad(0,  0, TileW, TileH, tilesetW, tilesetH),
+    box   = love.graphics.newQuad(32, 0, TileW, TileH, tilesetW, tilesetH)
   }
   
-  local tilesetW, tilesetH = images.tileset:getWidth(), images.tileset:getHeight()
-  
-  quads = {
-    grass = love.graphics.newQuad(0,  0, tileW, tileH, tilesetW, tilesetH),
-    box   = love.graphics.newQuad(32, 0, tileW, tileH, tilesetW, tilesetH)
-  }
-  
-  local tiles = [[
+  local str = [[
 #########################
 #                       #
 #                       #
@@ -60,23 +32,36 @@ function love.load()
 #########################
 ]]
 
-  map = newMap(tiles)
+  map = {}
+  
+  local width = #(str:match("[^\n]+"))
+  
+  for x = 1,width,1 do map[x] = {} end
 
+  local x,y = 1,1
+  for row in str:gmatch("[^\n]+") do
+    x = 1
+    for tile in row:gmatch(".") do
+      map[x][y] = tile
+      x = x + 1
+    end
+    y=y+1
+  end
 end
 
 
 function love.draw()
-  
   local quad
   
   for x,column in ipairs(map) do
     for y,tileValue in ipairs(column) do
       if tileValue == ' ' then
-        quad = quads.grass
+        quad = Quads.grass
       else
-        quad = quads.box
+        quad = Quads.box
       end
-      love.graphics.drawq(images.tileset, quad, (x-1)*tileW, (y-1)*tileH)
+      love.graphics.drawq(Tileset, quad, (x-1)*TileW, (y-1)*TileH)
     end
   end
+
 end

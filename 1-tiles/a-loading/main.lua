@@ -1,15 +1,13 @@
 
 function love.load()
 
-  tileW, tileH = 32,32
+  local tileW, tileH = 32,32
   
-  images = {
-    tileset = love.graphics.newImage('tileset.png')
-  }
+  Tileset = love.graphics.newImage('tileset.png')
   
-  local tilesetW, tilesetH = images.tileset:getWidth(), images.tileset:getHeight()
+  local tilesetW, tilesetH = Tileset:getWidth(), Tileset:getHeight()
   
-  quads = {
+  Quads = {
     grass = love.graphics.newQuad(0,  0, tileW, tileH, tilesetW, tilesetH),
     box   = love.graphics.newQuad(32, 0, tileW, tileH, tilesetW, tilesetH)
   }
@@ -17,13 +15,13 @@ function love.load()
 end
 
 function love.draw()
-  love.graphics.drawq(images.tileset, quads.grass, 368, 268)
-  love.graphics.drawq(images.tileset, quads.grass, 400, 268)
-  love.graphics.drawq(images.tileset, quads.grass, 432, 268)
-  love.graphics.drawq(images.tileset, quads.grass, 368, 300)
-  love.graphics.drawq(images.tileset, quads.box  , 400, 300)
-  love.graphics.drawq(images.tileset, quads.grass, 432, 300)
-  love.graphics.drawq(images.tileset, quads.grass, 368, 332)
-  love.graphics.drawq(images.tileset, quads.grass, 400, 332)
-  love.graphics.drawq(images.tileset, quads.grass, 432, 332)
+  love.graphics.drawq(Tileset, Quads.grass, 368, 268)
+  love.graphics.drawq(Tileset, Quads.grass, 400, 268)
+  love.graphics.drawq(Tileset, Quads.grass, 432, 268)
+  love.graphics.drawq(Tileset, Quads.grass, 368, 300)
+  love.graphics.drawq(Tileset, Quads.box  , 400, 300)
+  love.graphics.drawq(Tileset, Quads.grass, 432, 300)
+  love.graphics.drawq(Tileset, Quads.grass, 368, 332)
+  love.graphics.drawq(Tileset, Quads.grass, 400, 332)
+  love.graphics.drawq(Tileset, Quads.grass, 432, 332)
 end
