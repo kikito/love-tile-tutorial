@@ -32,17 +32,17 @@ function love.load()
 #########################
 ]]
 
-  map = {}
+  Map = {}
   
   local width = #(str:match("[^\n]+"))
   
-  for x = 1,width,1 do map[x] = {} end
+  for x = 1,width,1 do Map[x] = {} end
 
   local x,y = 1,1
   for row in str:gmatch("[^\n]+") do
     x = 1
     for tile in row:gmatch(".") do
-      map[x][y] = tile
+      Map[x][y] = tile
       x = x + 1
     end
     y=y+1
@@ -53,7 +53,7 @@ end
 function love.draw()
   local quad
   
-  for x,column in ipairs(map) do
+  for x,column in ipairs(Map) do
     for y,tileValue in ipairs(column) do
       if tileValue == ' ' then
         quad = Quads.grass
