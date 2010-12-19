@@ -13,7 +13,7 @@ function love.load()
     box   = love.graphics.newQuad(32, 0, TileW, TileH, tilesetW, tilesetH)
   }
   
-  Tiles = {
+  TileTable = {
   
      { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 },
      { 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1 },
@@ -41,7 +41,7 @@ function love.draw()
 
   local quad
 
-  for y,row in ipairs(Tiles) do
+  for y,row in ipairs(TileTable) do
     for x,tileKey in ipairs(row) do
       if tileKey == 0 then
         quad = Quads.grass
