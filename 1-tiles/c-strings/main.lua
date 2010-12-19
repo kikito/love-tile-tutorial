@@ -11,7 +11,7 @@ function love.load()
     box   = love.graphics.newQuad(32, 0, TileW, TileH, tilesetW, tilesetH)
   }
   
-  local str = [[
+  local tileString = [[
 #########################
 #                       #
 #                       #
@@ -32,17 +32,17 @@ function love.load()
 #########################
 ]]
 
-  Map = {}
+  TileTable = {}
   
-  local width = #(str:match("[^\n]+"))
+  local width = #(tileString:match("[^\n]+"))
   
-  for x = 1,width,1 do Map[x] = {} end
+  for x = 1,width,1 do TileTable[x] = {} end
 
   local x,y = 1,1
-  for row in str:gmatch("[^\n]+") do
+  for row in tileString:gmatch("[^\n]+") do
     x = 1
     for tile in row:gmatch(".") do
-      Map[x][y] = tile
+      TileTable[x][y] = tile
       x = x + 1
     end
     y=y+1
@@ -53,7 +53,7 @@ end
 function love.draw()
   local quad
   
-  for x,column in ipairs(Map) do
+  for x,column in ipairs(TileTable) do
     for y,tileKey in ipairs(column) do
       if tileKey == ' ' then
         quad = Quads.grass
