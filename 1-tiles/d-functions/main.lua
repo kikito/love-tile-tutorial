@@ -1,5 +1,5 @@
 
-local function loadMap(tileW, tileH, tilesetPath, quadInfo, str)
+local function loadMap(tileW, tileH, tilesetPath, TileString, quadInfo)
   Map = {}
   Map.tileW = tileW
   Map.tileH = tileH
@@ -12,17 +12,17 @@ local function loadMap(tileW, tileH, tilesetPath, quadInfo, str)
   for quadName,info in pairs(quadInfo) do
     local quad = love.graphics.newQuad(info.x, info.y, tileW, tileH, tilesetW, tilesetH)
     Map.quads[quadName] = quad
-    Map.quads[info.key] = quad
+    Map.quads[info.char] = quad
   end
   
   Map.tiles = {}
   
-  local width = #(str:match("[^\n]+"))
+  local width = #(TileString:match("[^\n]+"))
 
   for x = 1,width,1 do Map.tiles[x] = {} end
 
   local x,y = 1,1
-  for row in str:gmatch("[^\n]+") do
+  for row in TileString:gmatch("[^\n]+") do
     assert(#row == width, 'Map is not squared: width of row ' .. tostring(y) .. ' should be ' .. tostring(width) .. ', but it is ' .. tostring(#row))
     x = 1
     for tile in row:gmatch(".") do
@@ -46,7 +46,7 @@ end
 
 function love.load()
 
-  local str = [[
+  local tileString = [[
 #########################
 #                       #
 #                       #
@@ -67,15 +67,12 @@ function love.load()
 #########################
 ]]
 
-  loadMap(
-    32,32,                      -- tileWidth, tileHeight
-    'tileset.png',              -- tileset path
-    {      -- start of the quad info
-      grass = {  x=0, y=0, key=' ' },    -- 'grass' is a tile located at 0,0 in the tileset. It is represented by a space
-      box  =  { x=32, y=0, key='#' }     -- box is represented with the # character and is the quad on 32,0 on the tileset
-    },
-    str -- the string of tiles
-  )
+  local quadInfo = {
+    grass = {  x=0, y=0, char=' ' },    -- 'grass' is a tile located at 0,0 in the tileset. It is represented by a space
+    box  =  { x=32, y=0, char='#' }     -- box is represented with the # character and is the quad on 32,0 on the tileset
+  }
+
+  loadMap( 32,32, 'countryside.png', tileString, quadInfo)
 end
 
 
