@@ -7,21 +7,19 @@ function love.load()
   
   local tilesetW, tilesetH = Tileset:getWidth(), Tileset:getHeight()
   
-  Quads = {
-    grass = love.graphics.newQuad(0,  0, tileW, tileH, tilesetW, tilesetH),
-    box   = love.graphics.newQuad(32, 0, tileW, tileH, tilesetW, tilesetH)
-  }
+  GrassQuad = love.graphics.newQuad(0,  0, tileW, tileH, tilesetW, tilesetH)
+  BoxQuad = love.graphics.newQuad(32, 0, tileW, tileH, tilesetW, tilesetH)
 
 end
 
 function love.draw()
-  love.graphics.drawq(Tileset, Quads.grass, 368, 268)
-  love.graphics.drawq(Tileset, Quads.grass, 400, 268)
-  love.graphics.drawq(Tileset, Quads.grass, 432, 268)
-  love.graphics.drawq(Tileset, Quads.grass, 368, 300)
-  love.graphics.drawq(Tileset, Quads.box  , 400, 300)
-  love.graphics.drawq(Tileset, Quads.grass, 432, 300)
-  love.graphics.drawq(Tileset, Quads.grass, 368, 332)
-  love.graphics.drawq(Tileset, Quads.grass, 400, 332)
-  love.graphics.drawq(Tileset, Quads.grass, 432, 332)
+  love.graphics.drawq(Tileset, GrassQuad, 368, 268)
+  love.graphics.drawq(Tileset, GrassQuad, 400, 268)
+  love.graphics.drawq(Tileset, GrassQuad, 432, 268)
+  love.graphics.drawq(Tileset, GrassQuad, 368, 300)
+  love.graphics.drawq(Tileset, BoxQuad  , 400, 300)
+  love.graphics.drawq(Tileset, GrassQuad, 432, 300)
+  love.graphics.drawq(Tileset, GrassQuad, 368, 332)
+  love.graphics.drawq(Tileset, GrassQuad, 400, 332)
+  love.graphics.drawq(Tileset, GrassQuad, 432, 332)
 end

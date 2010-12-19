@@ -6,19 +6,16 @@ function love.load()
   
   local tilesetW, tilesetH = Tileset:getWidth(), Tileset:getHeight()
   
-  local quadInfo = {
-    grass   = {  0,  0, ' ' }, -- info1
-    box     = { 32,  0, '#' }, -- info2
-    boxTop  = { 32, 32, '^' }, -- etc
-    flowers = {  0, 32, '*' }
+  local quadInfo = { 
+    { ' ',  0,  0 }, -- grass 
+    { '#', 32,  0 }, -- box
+    { '^', 32, 32 }, -- boxTop
+    { '*',  0, 32 }  -- flowers
   }
-  
   Quads = {}
-  
-  for quadName,info in pairs(quadInfo) do
-    local quad = love.graphics.newQuad(info[1], info[2], TileW, TileH, tilesetW, tilesetH)
-    Quads[quadName] = quad
-    Quads[info[3]] = quad
+  for _,info in ipairs(quadInfo) do
+    -- info[1] = character, info[2] = x, info[3] = y
+    Quads[info[1]] = love.graphics.newQuad(info[2], info[3], TileW, TileH, tilesetW, tilesetH)
   end
   
   local tileString = [[

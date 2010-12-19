@@ -8,12 +8,11 @@ function love.load()
   
   local tilesetW, tilesetH = Tileset:getWidth(), Tileset:getHeight()
   
-  Quads = {
-    grass   = love.graphics.newQuad(0,   0, TileW, TileH, tilesetW, tilesetH),
-    box     = love.graphics.newQuad(32,  0, TileW, TileH, tilesetW, tilesetH),
-    boxTop  = love.graphics.newQuad(32, 32, TileW, TileH, tilesetW, tilesetH),
-    flowers = love.graphics.newQuad(0,  32, TileW, TileH, tilesetW, tilesetH),
-  }
+  Quads = {}
+  Quads[0] = love.graphics.newQuad(0,   0, TileW, TileH, tilesetW, tilesetH)  -- 0 = grass
+  Quads[1] = love.graphics.newQuad(32,  0, TileW, TileH, tilesetW, tilesetH)  -- 1 = box
+  Quads[2] = love.graphics.newQuad(32, 32, TileW, TileH, tilesetW, tilesetH)  -- 2 = boxtop
+  Quads[3] = love.graphics.newQuad(0,  32, TileW, TileH, tilesetW, tilesetH)  -- 3 = flowers
   
   TileTable = {
   
@@ -45,18 +44,7 @@ function love.draw()
 
   for y,row in ipairs(TileTable) do
     for x,number in ipairs(row) do
-      if number == 1 then
-        quad = Quads.box
-      elseif number == 2 then
-        quad = Quads.boxTop
-      elseif number == 3 then
-        quad = Quads.flowers
-      else
-        quad = Quads.grass
-      end
-      
-      love.graphics.drawq(Tileset, quad, (x-1)*TileW, (y-1)*TileH)
-
+      love.graphics.drawq(Tileset, Quads[number], (x-1)*TileW, (y-1)*TileH)
     end
   end
 end
