@@ -2,7 +2,7 @@ function love.load()
 
   TileW, TileH = 32,32
   
-  Tileset = love.graphics.newImage('tileset.png')
+  Tileset = love.graphics.newImage('countryside.png')
   
   local tilesetW, tilesetH = Tileset:getWidth(), Tileset:getHeight()
   
@@ -41,8 +41,8 @@ function love.load()
   local x,y = 1,1
   for row in tileString:gmatch("[^\n]+") do
     x = 1
-    for tile in row:gmatch(".") do
-      TileTable[x][y] = tile
+    for character in row:gmatch(".") do
+      TileTable[x][y] = character
       x = x + 1
     end
     y=y+1
@@ -54,8 +54,8 @@ function love.draw()
   local quad
   
   for x,column in ipairs(TileTable) do
-    for y,tileKey in ipairs(column) do
-      if tileKey == ' ' then
+    for y,character in ipairs(column) do
+      if character == ' ' then
         quad = Quads.grass
       else
         quad = Quads.box

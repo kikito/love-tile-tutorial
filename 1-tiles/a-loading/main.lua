@@ -3,7 +3,7 @@ function love.load()
 
   local tileW, tileH = 32,32
   
-  Tileset = love.graphics.newImage('tileset.png')
+  Tileset = love.graphics.newImage('countryside.png')
   
   local tilesetW, tilesetH = Tileset:getWidth(), Tileset:getHeight()
   
