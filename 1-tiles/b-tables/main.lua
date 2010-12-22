@@ -9,7 +9,7 @@ function love.load()
   local tilesetW, tilesetH = Tileset:getWidth(), Tileset:getHeight()
   
   Quads = {
-    love.graphics.newQuad(0,   0, TileW, TileH, tilesetW, tilesetH), -- 0 = grass
+    love.graphics.newQuad(0,   0, TileW, TileH, tilesetW, tilesetH), -- 1 = grass
     love.graphics.newQuad(32,  0, TileW, TileH, tilesetW, tilesetH), -- 2 = box
     love.graphics.newQuad(0,  32, TileW, TileH, tilesetW, tilesetH), -- 3 = flowers
     love.graphics.newQuad(32, 32, TileW, TileH, tilesetW, tilesetH)  -- 4 = boxtop
