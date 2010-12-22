@@ -41,10 +41,10 @@ end
 
 function love.draw()
 
-  local quad
-
-  for y,row in ipairs(TileTable) do
-    for x,number in ipairs(row) do
+  for y=1, #TileTable do
+    local row = TileTable[y]
+    for x=1, #row do
+      local number = row[x]
       love.graphics.drawq(Tileset, Quads[number], (x-1)*TileW, (y-1)*TileH)
     end
   end
