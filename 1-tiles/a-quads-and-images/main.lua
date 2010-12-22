@@ -1,10 +1,9 @@
 
 function love.load()
-
-  local tileW, tileH = 32,32
   
   Tileset = love.graphics.newImage('countryside.png')
   
+  local tileW, tileH = 32,32
   local tilesetW, tilesetH = Tileset:getWidth(), Tileset:getHeight()
   
   GrassQuad = love.graphics.newQuad(0,  0, tileW, tileH, tilesetW, tilesetH)
