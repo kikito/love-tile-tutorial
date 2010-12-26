@@ -51,7 +51,7 @@ local function loadMap()
 
   local x,y = 1,1
   for row in tileString:gmatch("[^\n]+") do
-    assert(#row == width, 'Map is not squared: width of row ' .. tostring(y) .. ' should be ' .. tostring(width) .. ', but it is ' .. tostring(#row))
+    assert(#row == width, 'Map is not aligned: width of row ' .. tostring(y) .. ' should be ' .. tostring(width) .. ', but it is ' .. tostring(#row))
     x = 1
     for tile in row:gmatch(".") do
       Map.tiles[x][y] = tile
