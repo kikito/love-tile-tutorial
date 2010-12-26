@@ -19,13 +19,7 @@ function love.load()
     Quads[info[1]] = love.graphics.newQuad(info[2], info[3], TileW, TileH, tilesetW, tilesetH)
   end
 
-  
-  Quads = {}
-  Quads[' '] = love.graphics.newQuad(0,   0, TileW, TileH, tilesetW, tilesetH) -- ' ' = grass   
-  Quads['#'] = love.graphics.newQuad(32,  0, TileW, TileH, tilesetW, tilesetH) -- '#' = boxes
-  Quads['^'] = love.graphics.newQuad(32, 32, TileW, TileH, tilesetW, tilesetH) -- '^' = boxTop
-  Quads['*'] = love.graphics.newQuad(0,  32, TileW, TileH, tilesetW, tilesetH) -- '*' = flowers
-  
+
   local tileString = [[
 ^#######################^
 ^                    *  ^
