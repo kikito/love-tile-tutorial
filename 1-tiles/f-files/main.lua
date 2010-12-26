@@ -1,7 +1,7 @@
 require 'map-functions'
 
 function love.load()
-  love.filesystem.load('maps/chez-peter.lua')() -- attention! extra parenthesis
+  loadMap('maps/chez-peter.lua')
 end
 
 function love.draw()
