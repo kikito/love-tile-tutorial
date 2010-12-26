@@ -5,6 +5,20 @@ function love.load()
   Tileset = love.graphics.newImage('countryside.png')
   
   local tilesetW, tilesetH = Tileset:getWidth(), Tileset:getHeight()
+
+  local quadInfo = { 
+    { ' ', 0,   0 }, -- 1 = grass 
+    { '#', 32,  0 }, -- 2 = box
+    { '*', 0,  32 }, -- 3 = flowers
+    { '^', 32, 32 }  -- 4 = boxTop
+  }
+
+  Quads = {}
+  for _,info in ipairs(quadInfo) do
+    -- info[1] = character, info[2]= x, info[3] = y
+    Quads[info[1]] = love.graphics.newQuad(info[2], info[3], TileW, TileH, tilesetW, tilesetH)
+  end
+
   
   Quads = {}
   Quads[' '] = love.graphics.newQuad(0,   0, TileW, TileH, tilesetW, tilesetH) -- ' ' = grass   
