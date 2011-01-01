@@ -46,9 +46,10 @@ end
 
 function love.draw()
 
-  for x,column in ipairs(TileTable) do
-    for y,number in ipairs(column) do
-      love.graphics.drawq(Tileset, Quads[number], (x-1)*TileW, (y-1)*TileH)
+  for columnIndex,column in ipairs(TileTable) do
+    for rowIndex,char in ipairs(column) do
+      local x,y = (columnIndex-1)*TileW, (rowIndex-1)*TileH
+      love.graphics.drawq(Tileset, Quads[char], x, y)
     end
   end
 
