@@ -40,12 +40,13 @@ function love.load()
 end
 
 function love.draw()
-
   for rowIndex=1, #TileTable do
     local row = TileTable[rowIndex]
     for columnIndex=1, #row do
       local number = row[columnIndex]
-      love.graphics.drawq(Tileset, Quads[number], (columnIndex-1)*TileW, (rowIndex-1)*TileH)
+      local x = (columnIndex-1)*TileW
+      local y = (rowIndex-1)*TileH
+      love.graphics.drawq(Tileset, Quads[number], x, y)
     end
   end
 end
