@@ -41,11 +41,11 @@ end
 
 function love.draw()
 
-  for y=1, #TileTable do
-    local row = TileTable[y]
-    for x=1, #row do
-      local number = row[x]
-      love.graphics.drawq(Tileset, Quads[number], (x-1)*TileW, (y-1)*TileH)
+  for rowIndex=1, #TileTable do
+    local row = TileTable[rowIndex]
+    for columnIndex=1, #row do
+      local number = row[columnIndex]
+      love.graphics.drawq(Tileset, Quads[number], (columnIndex-1)*TileW, (rowIndex-1)*TileH)
     end
   end
 end
