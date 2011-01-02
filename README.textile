@@ -1,0 +1,7 @@
+h1. Welcome!
+
+This is a tutorial for making tile-based games with "LÖVE":http://love2d.org .
+
+What you see above is the sourcecode for these tutorials.
+
+If you want to follow the tutorials, you can do it on the "wiki":https://github.com/kikito/love-tile-tutorial/wiki
