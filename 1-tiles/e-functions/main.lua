@@ -19,15 +19,15 @@ function loadMap(tileW, tileH, tilesetPath, tileString, quadInfo)
 
   for x = 1,width,1 do TileTable[x] = {} end
 
-  local x,y = 1,1
+  local rowIndex,columnIndex = 1,1
   for row in tileString:gmatch("[^\n]+") do
-    assert(#row == width, 'Map is not aligned: width of row ' .. tostring(y) .. ' should be ' .. tostring(width) .. ', but it is ' .. tostring(#row))
-    x = 1
-    for tile in row:gmatch(".") do
-      TileTable[x][y] = tile
-      x = x + 1
+    assert(#row == width, 'Map is not aligned: width of row ' .. tostring(rowIndex) .. ' should be ' .. tostring(width) .. ', but it is ' .. tostring(#row))
+    columnIndex = 1
+    for character in row:gmatch(".") do
+      TileTable[columnIndex][rowIndex] = character
+      columnIndex = columnIndex + 1
     end
-    y=y+1
+    rowIndex=rowIndex+1
   end
 
 end
