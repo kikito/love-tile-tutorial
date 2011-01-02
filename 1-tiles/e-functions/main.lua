@@ -6,7 +6,6 @@ function loadMap(tileW, tileH, tilesetPath, tileString, quadInfo)
   Tileset = love.graphics.newImage(tilesetPath)
   
   local tilesetW, tilesetH = Tileset:getWidth(), Tileset:getHeight()
-  
   Quads = {}
   
   for _,info in ipairs(quadInfo) do
