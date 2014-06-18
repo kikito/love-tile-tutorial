@@ -46,7 +46,7 @@ function love.draw()
       local number = row[columnIndex]
       local x = (columnIndex-1)*TileW
       local y = (rowIndex-1)*TileH
-      love.graphics.drawq(Tileset, Quads[number], x, y)
+      love.graphics.draw(Tileset, Quads[number], x, y)
     end
   end
 end

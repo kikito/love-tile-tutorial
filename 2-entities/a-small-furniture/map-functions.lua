@@ -55,7 +55,7 @@ function drawMap()
   for columnIndex,column in ipairs(tileTable) do
     for rowIndex,char in ipairs(column) do
       local x,y = map2world(columnIndex, rowIndex)
-      love.graphics.drawq(tileset, quads[ char ] , x, y)
+      love.graphics.draw(tileset, quads[ char ] , x, y)
     end
   end
   
@@ -63,6 +63,6 @@ function drawMap()
   for i,entity in ipairs(entities) do
     local name, x, y = entity[1], map2world(entity[2], entity[3])
   
-    love.graphics.drawq(tileset, quads[name], x, y)
+    love.graphics.draw(tileset, quads[name], x, y)
   end
 end
