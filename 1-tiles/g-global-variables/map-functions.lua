@@ -43,7 +43,7 @@ function drawMap()
   for columnIndex,column in ipairs(tileTable) do
     for rowIndex,char in ipairs(column) do
       local x,y = (columnIndex-1)*tileW, (rowIndex-1)*tileH
-      love.graphics.drawq(tileset, quads[ char ] , x, y)
+      love.graphics.draw(tileset, quads[ char ] , x, y)
     end
   end
 end

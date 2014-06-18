@@ -39,7 +39,7 @@ end
 function drawMap()
   for x,column in ipairs(TileTable) do
     for y,char in ipairs(column) do
-      love.graphics.drawq(Tileset, Quads[ char ] , (x-1)*TileW, (y-1)*TileH)
+      love.graphics.draw(Tileset, Quads[ char ] , (x-1)*TileW, (y-1)*TileH)
     end
   end
 end
