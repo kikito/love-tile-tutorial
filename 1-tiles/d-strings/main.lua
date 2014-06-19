@@ -1,10 +1,10 @@
 function love.load()
 
-  TileW, TileH = 32,32
+  tileW, tileH = 32,32
   
-  Tileset = love.graphics.newImage('countryside.png')
+  tileset = love.graphics.newImage('countryside.png')
   
-  local tilesetW, tilesetH = Tileset:getWidth(), Tileset:getHeight()
+  local tilesetW, tilesetH = tileset:getWidth(), tileset:getHeight()
 
   local quadInfo = { 
     { ' ', 0,   0 }, -- 1 = grass 
@@ -13,10 +13,10 @@ function love.load()
     { '^', 32, 32 }  -- 4 = boxTop
   }
 
-  Quads = {}
+  quads = {}
   for _,info in ipairs(quadInfo) do
     -- info[1] = character, info[2]= x, info[3] = y
-    Quads[info[1]] = love.graphics.newQuad(info[2], info[3], TileW, TileH, tilesetW, tilesetH)
+    quads[info[1]] = love.graphics.newQuad(info[2], info[3], tileW, tileH, tilesetW, tilesetH)
   end
 
 
@@ -64,8 +64,8 @@ function love.draw()
   
   for columnIndex,column in ipairs(TileTable) do
     for rowIndex,char in ipairs(column) do
-      local x,y = (columnIndex-1)*TileW, (rowIndex-1)*TileH
-      love.graphics.draw(Tileset, Quads[char], x, y)
+      local x,y = (columnIndex-1)*tileW, (rowIndex-1)*tileH
+      love.graphics.draw(tileset, quads[char], x, y)
     end
   end
 

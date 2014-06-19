@@ -1,30 +1,30 @@
 
-function loadMap(tileW, tileH, tilesetPath, tileString, quadInfo)
+function loadMap(tileWidth, tileHeight, tilesetPath, tileString, quadInfo)
   
-  TileW = tileW
-  TileH = tileH
-  Tileset = love.graphics.newImage(tilesetPath)
+  tileW = tileWidth
+  tileH = tileHeight
+  tileset = love.graphics.newImage(tilesetPath)
   
-  local tilesetW, tilesetH = Tileset:getWidth(), Tileset:getHeight()
-  Quads = {}
+  local tilesetW, tilesetH = tileset:getWidth(), tileset:getHeight()
+  quads = {}
   
   for _,info in ipairs(quadInfo) do
     -- info[1] = the character, info[2] = x, info[3] = y
-    Quads[info[1]] = love.graphics.newQuad(info[2], info[3], TileW,  TileH, tilesetW, tilesetH)
+    quads[info[1]] = love.graphics.newQuad(info[2], info[3], tileW,  tileH, tilesetW, tilesetH)
   end
   
-  TileTable = {}
+  tileTable = {}
   
   local width = #(tileString:match("[^\n]+"))
 
-  for x = 1,width,1 do TileTable[x] = {} end
+  for x = 1,width,1 do tileTable[x] = {} end
 
   local rowIndex,columnIndex = 1,1
   for row in tileString:gmatch("[^\n]+") do
     assert(#row == width, 'Map is not aligned: width of row ' .. tostring(rowIndex) .. ' should be ' .. tostring(width) .. ', but it is ' .. tostring(#row))
     columnIndex = 1
     for character in row:gmatch(".") do
-      TileTable[columnIndex][rowIndex] = character
+      tileTable[columnIndex][rowIndex] = character
       columnIndex = columnIndex + 1
     end
     rowIndex=rowIndex+1
@@ -33,10 +33,10 @@ function loadMap(tileW, tileH, tilesetPath, tileString, quadInfo)
 end
 
 function drawMap()
-  for columnIndex,column in ipairs(TileTable) do
+  for columnIndex,column in ipairs(tileTable) do
     for rowIndex,char in ipairs(column) do
-      local x,y = (columnIndex-1)*TileW, (rowIndex-1)*TileH
-      love.graphics.draw(Tileset, Quads[ char ], x, y)
+      local x,y = (columnIndex-1)*tileW, (rowIndex-1)*tileH
+      love.graphics.draw(tileset, quads[ char ], x, y)
     end
   end
 end
